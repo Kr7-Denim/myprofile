@@ -22,8 +22,11 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'URL is required' });
   }
   
-  if (!url.includes('visionplus.id')) {
-    return res.status(403).json({ error: 'Proxy ini khusus untuk Vision+' });
+  const allowedDomains = ['visionplus.id', 'cloudfront.net', 'akamaized.net'];
+  const isAllowed = allowedDomains.some(domain => url.includes(domain));
+  
+  if (!isAllowed) {
+    return res.status(403).json({ error: 'Proxy ini khusus untuk Vision+ (Domain tidak diizinkan)' });
   }
 
   const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
