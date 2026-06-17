@@ -1,0 +1,9 @@
+{
+  "name": "vision-proxy-vercel",
+  "version": "1.0.0",
+  "description": "Proxy Vercel untuk bypass Vision+",
+  "dependencies": {
+    "https-proxy-agent": "^7.0.2",
+    "node-fetch": "^2.7.0"
+  }
+}
